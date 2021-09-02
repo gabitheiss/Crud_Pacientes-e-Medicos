@@ -1,4 +1,4 @@
-package com.example.crud_pacientes_e_medicos.ui.main
+package com.example.crud_pacientes_e_medicos.view_model
 
 import androidx.lifecycle.ViewModel
 
