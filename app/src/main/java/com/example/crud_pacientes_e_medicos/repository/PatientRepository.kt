@@ -9,7 +9,6 @@ import javax.inject.Inject
 class PatientRepository @Inject constructor(private val patientDao: PatientDao) {
 
 
-
     fun getProducts(): List<PatientWithDoctor> {
         return patientDao.getPatients()
     }

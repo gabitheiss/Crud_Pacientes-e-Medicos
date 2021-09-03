@@ -2,9 +2,10 @@ package com.example.crud_pacientes_e_medicos.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
+import androidx.room.Entity
 import androidx.room.Relation
 
-
+@Entity
 data class Doctor(
 
     @ColumnInfo(name = "doctor_id")

@@ -15,12 +15,13 @@ import com.example.crud_pacientes_e_medicos.model.Patient
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun patientDao() : PatientDao
+    abstract fun doctorDao() : DoctorDao
 
     companion object{
 
 
         fun getDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context,AppDatabase::class.java, "crud_patient")
+            return Room.databaseBuilder(context,AppDatabase::class.java, "crud")
                 .allowMainThreadQueries()
                 .build()
         }
