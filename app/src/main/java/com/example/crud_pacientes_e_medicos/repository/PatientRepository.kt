@@ -5,6 +5,6 @@ import com.example.crud_pacientes_e_medicos.database.PatientDao
 
 class PatientRepository {
 
-    private val dao : PatientDao = AppDatabase.getDatabase().productDao()
+    private val dao : PatientDao = AppDatabase.getDatabase().patientDao()
 
 }

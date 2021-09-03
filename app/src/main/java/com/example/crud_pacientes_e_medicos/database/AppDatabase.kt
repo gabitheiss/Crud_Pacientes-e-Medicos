@@ -19,12 +19,8 @@ abstract class AppDatabase : RoomDatabase() {
     companion object{
 
 
-        fun getDatabase(): AppDatabase {
-            return Room.databaseBuilder(
-                CRUDApplication.contextCRUDApp!!,
-                AppDatabase::class.java,
-                "crud_app"
-            )
+        fun getDatabase(context: Context): AppDatabase {
+            return Room.databaseBuilder(context,AppDatabase::class.java, "crud_patient")
                 .allowMainThreadQueries()
                 .build()
         }
