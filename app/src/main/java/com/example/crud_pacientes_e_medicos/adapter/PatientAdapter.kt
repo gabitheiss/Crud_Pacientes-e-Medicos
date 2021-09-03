@@ -44,6 +44,8 @@ class PatientViewHolder(itemView: View, val onClick: (Patient) -> Unit ) : Recyc
 
     fun bind(patient: Patient){
         binding.idName.text = patient.name
+        binding.idGender.text = patient.patient_gender
+        binding.idAge.text = patient.age
         itemView.setOnClickListener{ onClick(patient) }
     }
 
