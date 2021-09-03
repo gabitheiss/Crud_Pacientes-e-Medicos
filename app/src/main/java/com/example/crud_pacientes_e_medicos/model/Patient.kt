@@ -17,7 +17,7 @@ data class Patient(
     var patient_gender : String,
 
     @ColumnInfo(name = "patient_age")
-    var age : Int
+    var age : String
 
     )
 

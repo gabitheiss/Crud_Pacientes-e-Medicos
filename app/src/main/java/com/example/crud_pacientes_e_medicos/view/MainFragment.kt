@@ -25,8 +25,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
     private lateinit var recyclerView: RecyclerView
-    private val adapterPatient = PatientAdapter(){
+    private var selectedPatient: Patient? = null
 
+    private val adapterPatient = PatientAdapter(){
+        selectedPatient = it
     }
 
     private val observerPatient = Observer<List<Patient>>{
@@ -44,6 +46,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         viewModel.patients.observe(viewLifecycleOwner,observerPatient)
         viewModel.getPatient()
+
         binding.buttonNew.setOnClickListener {
             val name = binding.idNamePatient.text
             val gender = binding.idGender.text
@@ -51,7 +54,28 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
             //veriificar se nao esta nulo
             if(name.toString().isNotEmpty()&& gender.toString().isNotEmpty() && age.toString().isNotEmpty()){
-                viewModel.insertPatient(Patient(name = name.toString(), patient_gender = gender.toString(), age = age.toString().toInt()))
+                viewModel.insertPatient(Patient(name = name.toString(), patient_gender = gender.toString(), age = age.toString()))
+            }
+        }
+        binding.buttonDelete.setOnClickListener {
+            selectedPatient?.let {
+                viewModel.deletePatient(it)
+            }
+        }
+
+        binding.buttonEdit.setOnClickListener {
+            val name = binding.idNamePatient.text ?: ""
+            val age = binding.idAge.text ?: ""
+            val gender = binding.idGender.text ?: ""
+
+            if (name.isNotEmpty() && age.isNotEmpty() && gender != null) {
+                Patient(
+                    name = name.toString(),
+                    age = age.toString(),
+                    patient_gender = gender.toString()
+                ).let {
+                    viewModel.updatePatient(it)
+                }
             }
         }
     }
