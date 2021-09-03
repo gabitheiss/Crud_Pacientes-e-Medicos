@@ -10,14 +10,29 @@ import com.example.crud_pacientes_e_medicos.repository.PatientRepository
 import javax.inject.Inject
 
 
-class MainViewModel @Inject constructor(private val patientRepository: PatientRepository,
-                                        private val doctorRepository: DoctorRepository) : ViewModel() {
+class MainViewModel @Inject constructor(private val patientRepository: PatientRepository) : ViewModel() {
 
     private val _patients = MutableLiveData<List<Patient>>()
     val patients: LiveData<List<Patient>> = _patients
 
-    private val _doctor = MutableLiveData<List<Doctor>>()
-    val doctor: LiveData<List<Doctor>> = _doctor
 
+    fun getPatient() {
+        _patients.value = patientRepository.getPatients()
+    }
+
+    fun insertProduct(patient: Patient) {
+        patientRepository.insert(patient)
+        getPatient()
+    }
+
+    fun deletePatient(patient: Patient){
+        patientRepository.delete(patient)
+        getPatient()
+    }
+
+    fun updatePatient(patient: Patient){
+        patientRepository.update(patient)
+        getPatient()
+    }
 
 }

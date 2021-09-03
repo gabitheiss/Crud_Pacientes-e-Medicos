@@ -1,6 +1,5 @@
 package com.example.crud_pacientes_e_medicos.repository
 
-import com.example.crud_pacientes_e_medicos.database.AppDatabase
 import com.example.crud_pacientes_e_medicos.database.PatientDao
 import com.example.crud_pacientes_e_medicos.model.Patient
 import javax.inject.Inject
@@ -8,7 +7,7 @@ import javax.inject.Inject
 class PatientRepository @Inject constructor(private val patientDao: PatientDao) {
 
 
-    fun getProducts(): List<Patient> {
+    fun getPatients(): List<Patient> {
         return patientDao.getPatients()
     }
 
