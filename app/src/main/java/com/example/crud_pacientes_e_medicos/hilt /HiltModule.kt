@@ -4,8 +4,10 @@ import android.content.Context
 import com.example.crud_pacientes_e_medicos.database.AppDatabase
 import com.example.crud_pacientes_e_medicos.database.DoctorDao
 import com.example.crud_pacientes_e_medicos.database.PatientDao
+import com.example.crud_pacientes_e_medicos.database.SpecialtyDao
 import com.example.crud_pacientes_e_medicos.repository.DoctorRepository
 import com.example.crud_pacientes_e_medicos.repository.PatientRepository
+import com.example.crud_pacientes_e_medicos.repository.SpecialtyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,4 +34,7 @@ object HiltModule {
 
     @Provides
     fun patientRepository(patientDao: PatientDao): PatientRepository = PatientRepository(patientDao)
+
+    @Provides
+    fun specialtyRepository(specialtyDao: SpecialtyDao): SpecialtyRepository = SpecialtyRepository(specialtyDao)
 }

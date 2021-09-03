@@ -7,10 +7,11 @@ import androidx.room.RoomDatabase
 import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.model.Schedule
+import com.example.crud_pacientes_e_medicos.model.Specialty
 
 
 @Database(
-    entities = [Patient::class, Doctor::class, Schedule::class],
+    entities = [Patient::class, Doctor::class, Schedule::class, Specialty::class],
 
     version = 1
 )

@@ -15,16 +15,6 @@ data class Doctor(
 
 )
 
-data class Specialty(
-
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "specialty_id")
-    var idSpecialty: Int,
-
-    @ColumnInfo(name = "specialty_id")
-    var nameSpecialty: String,
-
-)
 
 
 data class DoctorWithSpecialty(

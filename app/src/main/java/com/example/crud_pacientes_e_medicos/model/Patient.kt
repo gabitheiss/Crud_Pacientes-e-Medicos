@@ -17,19 +17,8 @@ data class Patient(
     var patient_gender : String,
 
     @ColumnInfo(name = "patient_age")
-    var age : String,
+    var age : String
 
-    val doctorFk: Int
 
     )
 
-data class PatientWithDoctor(
-
-    @Embedded
-    val patient: Patient,
-    @Relation(
-        parentColumn = "doctorFk",
-        entityColumn = "patient_id"
-    )
-    val doctor: Doctor
-)
