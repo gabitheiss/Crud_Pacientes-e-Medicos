@@ -4,6 +4,8 @@ import android.content.Context
 import com.example.crud_pacientes_e_medicos.database.AppDatabase
 import com.example.crud_pacientes_e_medicos.database.DoctorDao
 import com.example.crud_pacientes_e_medicos.database.PatientDao
+import com.example.crud_pacientes_e_medicos.repository.DoctorRepository
+import com.example.crud_pacientes_e_medicos.repository.PatientRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,4 +26,10 @@ object HiltModule {
         return AppDatabase.getDatabase(context).doctorDao()
     }
 
+
+    @Provides
+    fun doctorRepository(doctorDao: DoctorDao): DoctorRepository = DoctorRepository(doctorDao)
+
+    @Provides
+    fun patientRepository(patientDao: PatientDao): PatientRepository = PatientRepository(patientDao)
 }

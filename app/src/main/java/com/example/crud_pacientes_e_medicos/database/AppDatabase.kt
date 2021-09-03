@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.Patient
+import com.example.crud_pacientes_e_medicos.model.Schedule
 
 
 @Database(
-    entities = [Patient::class],
+    entities = [Patient::class, Doctor::class, Schedule::class],
+
     version = 1
 )
 

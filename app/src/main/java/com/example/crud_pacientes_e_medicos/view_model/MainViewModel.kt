@@ -5,9 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.PatientWithDoctor
+import com.example.crud_pacientes_e_medicos.repository.DoctorRepository
 import com.example.crud_pacientes_e_medicos.repository.PatientRepository
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+
+class MainViewModel @Inject constructor(private val patientRepository: PatientRepository,
+                                        private val doctorRepository: DoctorRepository) : ViewModel() {
 
     private val _patients = MutableLiveData<List<PatientWithDoctor>>()
     val patients: LiveData<List<PatientWithDoctor>> = _patients
@@ -15,6 +19,5 @@ class MainViewModel : ViewModel() {
     private val _doctor = MutableLiveData<List<Doctor>>()
     val doctor: LiveData<List<Doctor>> = _doctor
 
-    private val patientRepository = PatientRepository()
 
 }

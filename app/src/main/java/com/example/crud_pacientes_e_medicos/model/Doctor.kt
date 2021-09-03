@@ -1,25 +1,25 @@
 package com.example.crud_pacientes_e_medicos.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.Relation
+import androidx.room.*
 
 @Entity
 data class Doctor(
-
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "doctor_id")
-    var idDoctor: String,
+    var idDoctor: Int,
 
     @ColumnInfo(name = "doctor_name")
     var nameDoctor: String,
+
+    val doctorFk: Int
 
 )
 
 data class Specialty(
 
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "specialty_id")
-    var idSpecialty: String,
+    var idSpecialty: Int,
 
     @ColumnInfo(name = "specialty_id")
     var nameSpecialty: String,
@@ -31,8 +31,8 @@ data class DoctorWithSpecialty(
     @Embedded
     val doctor : Doctor,
     @Relation(
-        parentColumn = "doctor_fk",
-        entityColumn = "doctor_id"
+        parentColumn = "doctorFk",
+        entityColumn = "specialty_id"
     )
     val specialty: Specialty
 )
