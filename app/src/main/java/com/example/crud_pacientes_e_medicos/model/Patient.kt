@@ -8,7 +8,7 @@ data class Patient(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "patient_id")
-    var id: Int,
+    var id: Int = 0,
 
     @ColumnInfo(name = "patient_name")
     var name: String,
@@ -17,8 +17,7 @@ data class Patient(
     var patient_gender : String,
 
     @ColumnInfo(name = "patient_age")
-    var age : String
-
+    var age : Int
 
     )
 

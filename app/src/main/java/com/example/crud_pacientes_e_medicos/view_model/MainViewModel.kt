@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(private val patientRepository: PatientRe
         _patients.value = patientRepository.getPatients()
     }
 
-    fun insertProduct(patient: Patient) {
+    fun insertPatient(patient: Patient) {
         patientRepository.insert(patient)
         getPatient()
     }
