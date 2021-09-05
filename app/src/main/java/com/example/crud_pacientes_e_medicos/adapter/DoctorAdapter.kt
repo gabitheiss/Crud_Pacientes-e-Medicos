@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.databinding.ItensDoctorsBinding
 import com.example.crud_pacientes_e_medicos.model.Doctor
-import com.example.crud_pacientes_e_medicos.model.Patient
+
 
 class DoctorAdapter(val onClick: (Doctor) -> Unit) : RecyclerView.Adapter<DoctorViewHolder>() {
 
@@ -43,6 +43,5 @@ class DoctorViewHolder(itemView: View, val onClick: (Doctor) -> Unit) :
 
     fun bind(doctor: Doctor) {
         binding.idNameDoctor.text = doctor.nameDoctor
-        //binding.idSpecialtyDoctor.text = doctor.
     }
 }
