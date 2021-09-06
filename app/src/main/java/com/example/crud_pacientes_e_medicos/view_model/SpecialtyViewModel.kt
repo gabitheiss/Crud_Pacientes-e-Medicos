@@ -13,23 +13,23 @@ class SpecialtyViewModel @Inject constructor(private val specialtyRepository: Sp
     private val _specialty = MutableLiveData<List<Specialty>>()
     val specialty: LiveData<List<Specialty>> = _specialty
 
-    fun getDoctor() {
+    fun getSpecialty() {
         _specialty.value = specialtyRepository.getSpecialty()
     }
 
     fun insertSpecialty(specialty: Specialty) {
         specialtyRepository.insert(specialty)
-        getDoctor()
+        getSpecialty()
     }
 
     fun deleteSpecialty(specialty: Specialty){
         specialtyRepository.delete(specialty)
-        getDoctor()
+        getSpecialty()
     }
 
     fun updateSpecialty(specialty: Specialty){
         specialtyRepository.update(specialty)
-        getDoctor()
+        getSpecialty()
     }
 
 }
