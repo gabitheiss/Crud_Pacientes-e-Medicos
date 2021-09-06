@@ -84,7 +84,7 @@
 
 
     <EditText
-        android:id="@+id/idNamePatient"
+        android:id="@+id/idNameDotor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"

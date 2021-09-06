@@ -11,5 +11,5 @@ data class Specialty(
     var id: Int,
 
     @ColumnInfo(name = "specialty_name")
-    var name: String,
+    var nameSpecialty: String,
 )

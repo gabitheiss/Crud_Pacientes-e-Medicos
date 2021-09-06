@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.databinding.ItensDoctorsBinding
 import com.example.crud_pacientes_e_medicos.model.Doctor
+import com.example.crud_pacientes_e_medicos.model.DoctorWithSpecialty
 
 
 class DoctorAdapter(val onClick: (Doctor) -> Unit) : RecyclerView.Adapter<DoctorViewHolder>() {
 
-    private var listOfDoctors = mutableListOf<Doctor>()
+    private var listOfDoctors = mutableListOf<DoctorWithSpecialty>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorViewHolder {
         return LayoutInflater.from(parent.context)
@@ -28,7 +29,7 @@ class DoctorAdapter(val onClick: (Doctor) -> Unit) : RecyclerView.Adapter<Doctor
 
     override fun getItemCount(): Int = listOfDoctors.size
 
-    fun update(list: List<Doctor>) {
+    fun update(list: List<DoctorWithSpecialty>) {
         listOfDoctors = mutableListOf()
         listOfDoctors.addAll(list)
         notifyDataSetChanged()
@@ -41,7 +42,8 @@ class DoctorViewHolder(itemView: View, val onClick: (Doctor) -> Unit) :
 
     private val binding = ItensDoctorsBinding.bind(itemView)
 
-    fun bind(doctor: Doctor) {
-        binding.idNameDoctor.text = doctor.nameDoctor
+    fun bind(doctorWithSpecialty: DoctorWithSpecialty) {
+        binding.idNameDoctor.text = doctorWithSpecialty.doctor.nameDoctor
+        binding.idSpecialtyDoctor.text = doctorWithSpecialty.specialty.name
     }
 }

@@ -7,7 +7,7 @@ import com.example.crud_pacientes_e_medicos.model.Specialty
 import com.example.crud_pacientes_e_medicos.repository.SpecialtyRepository
 import javax.inject.Inject
 
-class SpecialtyViewModel @Inject constructor(private val specialtyRepository: SpecialtyRepository) : ViewModel() {
+class SpecialtyViewModel @Inject constructor(private val specialtyRepository: SpecialtyRepository) : ViewModel(){
 
 
     private val _specialty = MutableLiveData<List<Specialty>>()
@@ -17,17 +17,17 @@ class SpecialtyViewModel @Inject constructor(private val specialtyRepository: Sp
         _specialty.value = specialtyRepository.getSpecialty()
     }
 
-    fun insertProduct(specialty: Specialty) {
+    fun insertSpecialty(specialty: Specialty) {
         specialtyRepository.insert(specialty)
         getDoctor()
     }
 
-    fun deletePatient(specialty: Specialty){
+    fun deleteSpecialty(specialty: Specialty){
         specialtyRepository.delete(specialty)
         getDoctor()
     }
 
-    fun updatePatient(specialty: Specialty){
+    fun updateSpecialty(specialty: Specialty){
         specialtyRepository.update(specialty)
         getDoctor()
     }
