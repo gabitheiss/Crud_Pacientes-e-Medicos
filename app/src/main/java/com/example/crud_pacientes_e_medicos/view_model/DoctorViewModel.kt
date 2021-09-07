@@ -25,17 +25,17 @@ class DoctorViewModel @Inject constructor(private val doctorRepository: DoctorRe
         _doctor.value = doctorRepository.getDoctors()
     }
 
-    fun insertDoctor(doctor: Doctor) {
+    fun insert(doctor: Doctor) {
         doctorRepository.insert(doctor)
         getDoctor()
     }
 
-    fun deleteDoctor(doctor: Doctor){
+    fun delete(doctor: Doctor){
         doctorRepository.delete(doctor)
         getDoctor()
     }
 
-    fun updateDoctor(doctor: Doctor){
+    fun update(doctor: Doctor){
         doctorRepository.update(doctor)
         getDoctor()
     }

@@ -75,6 +75,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         binding.buttonDelete.setOnClickListener {
             selectedPatient?.let {
                 viewModel.deletePatient(it)
+                clearFields()
             }
         }
 
