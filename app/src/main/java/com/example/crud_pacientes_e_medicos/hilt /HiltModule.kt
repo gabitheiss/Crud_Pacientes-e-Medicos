@@ -1,10 +1,7 @@
 package com.example.crud_pacientes_e_medicos.hilt
 
 import android.content.Context
-import com.example.crud_pacientes_e_medicos.database.AppDatabase
-import com.example.crud_pacientes_e_medicos.database.DoctorDao
-import com.example.crud_pacientes_e_medicos.database.PatientDao
-import com.example.crud_pacientes_e_medicos.database.SpecialtyDao
+import com.example.crud_pacientes_e_medicos.database.*
 import com.example.crud_pacientes_e_medicos.repository.DoctorRepository
 import com.example.crud_pacientes_e_medicos.repository.PatientRepository
 import com.example.crud_pacientes_e_medicos.repository.SpecialtyRepository
@@ -30,6 +27,10 @@ object HiltModule {
     @Provides
     fun provideSpecialtyDao(@ApplicationContext context: Context): SpecialtyDao {
         return AppDatabase.getDatabase(context).specialtyDao()
+    }
+    @Provides
+    fun provideSchedulesDao(@ApplicationContext context: Context): SchedulesDao {
+        return AppDatabase.getDatabase(context).schedulesDao()
     }
 
 

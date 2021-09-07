@@ -11,7 +11,7 @@ import com.example.crud_pacientes_e_medicos.model.Specialty
 
 
 @Database(
-    entities = [Patient::class, Doctor::class, Schedule::class, Specialty::class],
+    entities = [Patient::class, Doctor::class, Schedule::class, Specialty::class, Schedule::class],
 
     version = 1
 )
@@ -21,6 +21,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun patientDao() : PatientDao
     abstract fun doctorDao() : DoctorDao
     abstract fun specialtyDao() : SpecialtyDao
+    abstract fun schedulesDao() : SchedulesDao
 
     companion object{
 

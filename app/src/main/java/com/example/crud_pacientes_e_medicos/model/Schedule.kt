@@ -17,7 +17,6 @@ data class SchedulePatientsWithDoctors(
     @Embedded
     val schedule: Schedule,
 
-
     @Relation(
         parentColumn = "patientFK",
         entityColumn = "patient_id"

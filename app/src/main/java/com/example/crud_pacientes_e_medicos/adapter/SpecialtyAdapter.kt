@@ -17,13 +17,16 @@ class SpecialtyAdapter(val onClick: (Specialty)->Unit) : RecyclerView.Adapter<Sp
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialtyViewHolder {
         return LayoutInflater.from(parent.context)
             .inflate(R.layout.itens_specialty,parent, false).let {
-                SpecialtyViewHolder(it, onClick)
+                SpecialtyViewHolder(it)
             }
     }
 
     override fun onBindViewHolder(holder: SpecialtyViewHolder, position: Int) {
-        listOfSpecialties[position].let {
-            holder.bind(it)
+        listOfSpecialties[position].apply {
+            holder.bind(this)
+            holder.itemView.setOnClickListener{
+                onClick(this)
+            }
         }
     }
 
@@ -37,14 +40,14 @@ class SpecialtyAdapter(val onClick: (Specialty)->Unit) : RecyclerView.Adapter<Sp
 }
 
 
-class SpecialtyViewHolder(itemView: View, val onClick: (Specialty) -> Unit ) : RecyclerView.ViewHolder(itemView){
+class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
     private val binding = ItensSpecialtyBinding.bind(itemView)
 
     fun bind(specialty: Specialty){
         binding.idNameSpecialty.text = specialty.nameSpecialty
-        itemView.setOnClickListener{ onClick(specialty) }
+
     }
 
 }

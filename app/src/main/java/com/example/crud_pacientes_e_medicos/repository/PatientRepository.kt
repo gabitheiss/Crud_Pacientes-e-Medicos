@@ -12,7 +12,7 @@ class PatientRepository @Inject constructor(private val patientDao: PatientDao) 
     }
 
     fun insert(patient: Patient) {
-        return patientDao.insert(patient)
+        return patientDao.insert(arrayListOf(patient))
     }
 
     fun delete(patient: Patient) {

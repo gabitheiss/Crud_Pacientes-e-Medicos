@@ -9,11 +9,14 @@ import com.example.crud_pacientes_e_medicos.model.Patient
 interface PatientDao {
 
     @Transaction
-    @Query ("SELECT * from Patient")
+    @Query ("SELECT * from Patient order by patient_name ")
     fun getPatients() : List<Patient>
 
+//    @Query ("SELECT * from Patient order by patient_gender")
+//    fun fetch(gender: String) : List<Patient>
+
     @Insert(onConflict = ABORT)
-    fun insert(patient: Patient)
+    fun insert(list: List<Patient>)
 
     @Delete
     fun delete(patient: Patient)

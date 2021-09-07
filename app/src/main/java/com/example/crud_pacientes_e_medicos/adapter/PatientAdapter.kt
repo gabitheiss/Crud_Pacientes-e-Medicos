@@ -16,13 +16,16 @@ class PatientAdapter(val onClick: (Patient)->Unit) : RecyclerView.Adapter<Patien
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientViewHolder {
         return LayoutInflater.from(parent.context)
             .inflate(R.layout.itens_patients,parent, false).let {
-                PatientViewHolder(it, onClick)
+                PatientViewHolder(it)
             }
     }
 
     override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {
-        listOfPatients[position].let {
-            holder.bind(it)
+        listOfPatients[position].apply {
+            holder.bind(this)
+            holder.itemView.setOnClickListener{
+                onClick(this)
+            }
         }
 
     }
@@ -38,7 +41,7 @@ class PatientAdapter(val onClick: (Patient)->Unit) : RecyclerView.Adapter<Patien
 }
 
 
-class PatientViewHolder(itemView: View, val onClick: (Patient) -> Unit ) : RecyclerView.ViewHolder(itemView){
+class PatientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
     private val binding = ItensPatientsBinding.bind(itemView)
 
@@ -46,7 +49,7 @@ class PatientViewHolder(itemView: View, val onClick: (Patient) -> Unit ) : Recyc
         binding.idName.text = patient.name
         binding.idGender.text = patient.patient_gender
         binding.idAge.text = patient.age
-        itemView.setOnClickListener{ onClick(patient) }
+
     }
 
 }

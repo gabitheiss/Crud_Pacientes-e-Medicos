@@ -3,7 +3,10 @@ package com.example.crud_pacientes_e_medicos
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.crud_pacientes_e_medicos.view.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

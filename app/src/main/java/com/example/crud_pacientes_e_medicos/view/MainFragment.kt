@@ -64,17 +64,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.buttonEdit.setOnClickListener {
-            val name = binding.idNamePatient.text ?: ""
-            val age = binding.idAge.text ?: ""
-            val gender = binding.idGender.text ?: ""
+            selectedPatient?.let {
+                val name = binding.idNamePatient.text
+                val age = binding.idAge.text
+                val gender = binding.idGender.text
 
-            if (name.isNotEmpty() && age.isNotEmpty() && gender != null) {
-                Patient(
-                    name = name.toString(),
-                    age = age.toString(),
-                    patient_gender = gender.toString()
-                ).let {
-                    viewModel.updatePatient(it)
+                if (name.isNotEmpty() && age.isNotEmpty() && gender != null) {
+                    viewModel.updatePatient( Patient(
+                        name = name.toString(),
+                        age = age.toString(),
+                        patient_gender = gender.toString())
+                    )
                 }
             }
         }

@@ -13,18 +13,16 @@ data class Doctor(
 
     val specialtyFk: Int = 0,
 
-    //val doctorFK: Int = 0
-
 )
 
 
 data class DoctorWithSpecialty(
     @Embedded
-    val doctor: Doctor,
+    val doctor: Doctor?,
     @Relation(
         parentColumn = "specialtyFk",
         entityColumn = "specialty_id"
     )
-    val specialty: Specialty
+    val specialty: Specialty?
 )
 

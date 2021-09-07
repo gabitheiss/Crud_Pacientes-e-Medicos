@@ -14,7 +14,7 @@ class SpecialtyRepository @Inject constructor(private val specialtyDao: Specialt
     }
 
     fun insert(specialty: Specialty) {
-        return specialtyDao.insert(specialty)
+        return specialtyDao.insert(arrayListOf(specialty))
     }
 
     fun delete(specialty: Specialty) {
