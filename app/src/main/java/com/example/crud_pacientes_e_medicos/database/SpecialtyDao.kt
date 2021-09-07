@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.Specialty
 
+@Dao
 interface SpecialtyDao {
 
     @Transaction

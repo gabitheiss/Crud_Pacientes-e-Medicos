@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.databinding.ItensSpecialtyBinding
+import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.model.Specialty
 
 
@@ -27,6 +28,12 @@ class SpecialtyAdapter(val onClick: (Specialty)->Unit) : RecyclerView.Adapter<Sp
     }
 
     override fun getItemCount(): Int  = listOfSpecialties.size
+
+    fun update(newList: List<Specialty>){
+        listOfSpecialties = mutableListOf()
+        listOfSpecialties.addAll(newList)
+        notifyDataSetChanged()
+    }
 }
 
 

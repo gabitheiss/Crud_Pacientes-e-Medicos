@@ -27,6 +27,10 @@ object HiltModule {
     fun provideDoctorDao(@ApplicationContext context: Context): DoctorDao {
         return AppDatabase.getDatabase(context).doctorDao()
     }
+    @Provides
+    fun provideSpecialtyDao(@ApplicationContext context: Context): SpecialtyDao {
+        return AppDatabase.getDatabase(context).specialtyDao()
+    }
 
 
     @Provides

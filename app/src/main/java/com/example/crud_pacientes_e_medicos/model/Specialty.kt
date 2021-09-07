@@ -8,8 +8,9 @@ import androidx.room.PrimaryKey
 data class Specialty(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "specialty_id")
-    var id: Int,
+    var idSpecialty: Int = 0,
 
     @ColumnInfo(name = "specialty_name")
     var nameSpecialty: String,
+
 )
