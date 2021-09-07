@@ -3,15 +3,13 @@ package com.example.crud_pacientes_e_medicos.view
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.adapter.PatientAdapter
-import com.example.crud_pacientes_e_medicos.databinding.MainActivityBinding
 import com.example.crud_pacientes_e_medicos.databinding.MainFragmentBinding
 import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.view_model.MainViewModel
@@ -31,6 +29,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val adapterPatient = PatientAdapter(){
         selectedPatient = it
+        valueToFields(it)
+    }
+    private fun valueToFields(patient: Patient) {
+        binding.idNamePatient?.setText(patient.name)
+        binding.idGender?.setText(patient.patient_gender)
+        binding.idAge?.setText(patient.age)
     }
 
     private val observerPatient = Observer<List<Patient>>{
@@ -46,7 +50,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapterPatient
 
-        viewModel.patients.observe(viewLifecycleOwner,observerPatient)
+        viewModel.patients.observe(viewLifecycleOwner, observerPatient)
         viewModel.getPatient()
 
         binding.buttonNew.setOnClickListener {
@@ -55,8 +59,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             val age = binding.idAge.text
 
             //veriificar se nao esta nulo
-            if(name.toString().isNotEmpty()&& gender.toString().isNotEmpty() && age.toString().isNotEmpty()){
-                viewModel.insertPatient(Patient(name = name.toString(), patient_gender = gender.toString(), age = age.toString()))
+            if (name.toString().isNotEmpty() && gender.toString().isNotEmpty() && age.toString()
+                    .isNotEmpty()
+            ) {
+                viewModel.insertPatient(
+                    Patient(
+                        name = name.toString(),
+                        patient_gender = gender.toString(),
+                        age = age.toString()
+                    )
+                )
+                clearFields()
             }
         }
         binding.buttonDelete.setOnClickListener {
@@ -67,19 +80,28 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding.buttonEdit.setOnClickListener {
             selectedPatient?.let {
-                val name = binding.idNamePatient.text
-                val age = binding.idAge.text
-                val gender = binding.idGender.text
+                val name = binding.idNamePatient
+                val age = binding.idAge
+                val gender = binding.idGender
 
-                if (name.isNotEmpty() && age.isNotEmpty() && gender != null) {
-                    viewModel.updatePatient( Patient(
-                        name = name.toString(),
-                        age = age.toString(),
-                        patient_gender = gender.toString())
+                if (name.editableText.isNotEmpty() && age.text.isNotEmpty() && gender.text.isNotEmpty()) {
+                    viewModel.updatePatient(
+                        Patient(
+                            id = selectedPatient!!.id,
+                            name = name.text.toString(),
+                            age = age.text.toString(),
+                            patient_gender = gender.text.toString()
+                        )
                     )
+                    clearFields()
                 }
             }
         }
     }
 
+    private fun clearFields() {
+        binding.idNamePatient?.setText("")
+        binding.idAge?.setText("")
+        binding.idGender?.setText("")
+    }
 }

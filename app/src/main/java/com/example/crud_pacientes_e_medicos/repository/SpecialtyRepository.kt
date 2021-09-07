@@ -1,9 +1,8 @@
 package com.example.crud_pacientes_e_medicos.repository
 
-import com.example.crud_pacientes_e_medicos.database.PatientDao
+
 import com.example.crud_pacientes_e_medicos.database.SpecialtyDao
-import com.example.crud_pacientes_e_medicos.model.Doctor
-import com.example.crud_pacientes_e_medicos.model.DoctorWithSpecialty
+
 import com.example.crud_pacientes_e_medicos.model.Specialty
 import javax.inject.Inject
 

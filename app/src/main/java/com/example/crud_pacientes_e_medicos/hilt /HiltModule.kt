@@ -37,9 +37,10 @@ object HiltModule {
     @Provides
     fun doctorRepository(doctorDao: DoctorDao): DoctorRepository = DoctorRepository(doctorDao)
 
-    @Provides
-    fun patientRepository(patientDao: PatientDao): PatientRepository = PatientRepository(patientDao)
+        @Provides
+        fun patientRepository(patientDao: PatientDao): PatientRepository =
+            PatientRepository(patientDao)
 
     @Provides
     fun specialtyRepository(specialtyDao: SpecialtyDao): SpecialtyRepository = SpecialtyRepository(specialtyDao)
-}
+    }

@@ -7,9 +7,13 @@ import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.DoctorWithSpecialty
 import com.example.crud_pacientes_e_medicos.model.Specialty
 import com.example.crud_pacientes_e_medicos.repository.DoctorRepository
+import com.example.crud_pacientes_e_medicos.repository.SpecialtyRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-class DoctorViewModel @Inject constructor(private val doctorRepository: DoctorRepository) : ViewModel() {
+@HiltViewModel
+class DoctorViewModel @Inject constructor(private val doctorRepository: DoctorRepository,
+                                          private val specialtyRepository: SpecialtyRepository) : ViewModel() {
 
     private val _doctor = MutableLiveData<List<DoctorWithSpecialty>>()
     val doctor: LiveData<List<DoctorWithSpecialty>> = _doctor
@@ -34,6 +38,10 @@ class DoctorViewModel @Inject constructor(private val doctorRepository: DoctorRe
     fun updateDoctor(doctor: Doctor){
         doctorRepository.update(doctor)
         getDoctor()
+    }
+
+    fun getSpecialty() {
+        _specialty.value = specialtyRepository.getSpecialty()
     }
 
 }

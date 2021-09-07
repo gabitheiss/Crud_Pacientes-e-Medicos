@@ -11,23 +11,23 @@ import com.example.crud_pacientes_e_medicos.model.Specialty
 
 
 @Database(
-    entities = [Patient::class, Doctor::class, Schedule::class, Specialty::class, Schedule::class],
+    entities = [Patient::class, Specialty::class, Doctor::class, Schedule::class],
 
     version = 1
 )
 
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun patientDao() : PatientDao
-    abstract fun doctorDao() : DoctorDao
-    abstract fun specialtyDao() : SpecialtyDao
-    abstract fun schedulesDao() : SchedulesDao
+    abstract fun patientDao(): PatientDao
+    abstract fun doctorDao(): DoctorDao
+    abstract fun specialtyDao(): SpecialtyDao
+    abstract fun schedulesDao(): SchedulesDao
 
-    companion object{
+    companion object {
 
 
         fun getDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder(context,AppDatabase::class.java, "crud")
+            return Room.databaseBuilder(context, AppDatabase::class.java, "crud")
                 .allowMainThreadQueries()
                 .build()
         }

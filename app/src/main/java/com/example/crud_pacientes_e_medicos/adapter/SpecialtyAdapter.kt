@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.databinding.ItensSpecialtyBinding
-import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.model.Specialty
 
 

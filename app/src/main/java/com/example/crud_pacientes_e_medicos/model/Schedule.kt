@@ -7,28 +7,27 @@ data class Schedule(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "schedule_id")
-    var idSchedule: Int,
-    var patientFK : Int,
-    var doctorFK: Int
+    var idSchedule: Long = 0,
+    var patientFK : Long,
+    var doctorFK: Long
 )
 
 
 data class SchedulePatientsWithDoctors(
     @Embedded
-    val schedule: Schedule,
+    val schedule: Schedule?,
 
     @Relation(
         parentColumn = "patientFK",
         entityColumn = "patient_id"
     )
-    val patient: Patient,
+    val patient: Patient?,
 
 
     @Relation(
-        parentColumn = "doctorFk",
+        parentColumn = "doctorFK",
         entityColumn = "doctor_id"
     )
-
-    val doctor: Doctor
+    val doctor: Doctor?
 
 )

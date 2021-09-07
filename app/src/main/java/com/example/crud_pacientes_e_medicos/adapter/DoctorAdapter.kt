@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.databinding.ItensDoctorsBinding
-import com.example.crud_pacientes_e_medicos.model.Doctor
 import com.example.crud_pacientes_e_medicos.model.DoctorWithSpecialty
 
 
@@ -45,7 +44,7 @@ class DoctorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val binding = ItensDoctorsBinding.bind(itemView)
 
     fun bind(doctorWithSpecialty: DoctorWithSpecialty) {
-        binding.idNameDoctor.text = doctorWithSpecialty.doctor.nameDoctor
-        binding.idSpecialtyDoctor.text = doctorWithSpecialty.specialty.nameSpecialty
+        binding.idNameDoctor.text = doctorWithSpecialty.doctor?.nameDoctor
+        binding.idSpecialtyDoctor.text = doctorWithSpecialty.specialty?.nameSpecialty
     }
 }

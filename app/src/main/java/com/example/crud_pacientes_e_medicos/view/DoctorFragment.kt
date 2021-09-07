@@ -30,10 +30,9 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
     }
 
     private lateinit var viewModel: DoctorViewModel
-    private lateinit var viewModelSpecialty: SpecialtyViewModel
     private lateinit var binding: FragmentDoctorBinding
-    private lateinit var recyclerView: RecyclerView
     private lateinit var arrayAdapter : ArrayAdapter<String>
+
     private var selectedDoctor: Doctor? = null
     private var selectedSpecialty: Specialty? = null
 
@@ -56,14 +55,12 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDoctorBinding.bind(view)
         viewModel = ViewModelProvider(this).get(DoctorViewModel::class.java)
-        viewModelSpecialty = ViewModelProvider(this).get(SpecialtyViewModel::class.java)
 
-        recyclerView = binding.recyclerViewListDoctors
+       var recyclerView = binding.recyclerViewListDoctors
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapterDoctor
 
-        viewModelSpecialty.specialty.observe(viewLifecycleOwner,observerSpecialty)
-        viewModelSpecialty.getSpecialty()
+
         viewModel.doctor.observe(viewLifecycleOwner,observerDoctor)
         viewModel.getDoctor()
 
@@ -95,7 +92,7 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
 //
 //            selectedDoctor = doctorWithSpecialty
 //            selectedSpecialty = doctorWithSpecialty.specialty
-//        }
+//       }
     }
 
 }
