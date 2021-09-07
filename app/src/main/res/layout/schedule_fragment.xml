@@ -12,9 +12,9 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="15dp"
-        android:src="@drawable/ic_baseline_add_location_24"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewListSpecialty"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewListSpecialty"
+        android:src="@drawable/ic_baseline_date_range_24"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewListSchedules"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewListSchedules"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -23,31 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="ESPECIALIDADES"
+        android:text="CONSULTAS"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewListSpecialty"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewListSchedules"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewListSpecialty"
+        android:id="@+id/recyclerViewListSchedules"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="15dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="Adicionar Especialidade"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/idSpecialty"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
     <View
@@ -57,18 +46,46 @@
         android:layout_margin="15dp"
         android:alpha="0.12"
         android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutPatient"
         tools:layout_editor_absoluteX="20dp" />
 
-    <EditText
-        android:id="@+id/idSpecialty"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutPatient"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="Especialidade"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutDoctor"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/specialistPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutDoctor"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDelete"
+        android:layout_margin="16dp">
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/specialtyDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionThreshold="1"
         tools:ignore="MissingConstraints" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
@@ -99,9 +116,6 @@
         android:text="Novo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

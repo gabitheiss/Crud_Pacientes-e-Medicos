@@ -11,7 +11,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="15dp"
-        android:src="@drawable/ic_baseline_person"
+        android:src="@drawable/ic_baseline_business_center_24"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewListDoctors"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewListDoctors"
         app:layout_constraintTop_toTopOf="parent" />
