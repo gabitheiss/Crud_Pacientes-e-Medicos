@@ -15,7 +15,9 @@ import com.example.crud_pacientes_e_medicos.databinding.MainActivityBinding
 import com.example.crud_pacientes_e_medicos.databinding.MainFragmentBinding
 import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.view_model.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     companion object {

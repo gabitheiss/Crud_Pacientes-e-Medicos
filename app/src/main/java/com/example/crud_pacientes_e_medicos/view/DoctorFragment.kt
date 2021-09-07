@@ -88,6 +88,14 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
                 viewModel.updateDoctor(Doctor(nameDoctor = name.toString(), specialtyFk = selectedSpecialty!!.idSpecialty))
             }
         }
+
+//        fun valueFields(doctorWithSpecialty: DoctorWithSpecialty) {
+//            binding.idNameDotor.editText?.setText(doctorWithSpecialty.doctor?.nameDoctor)
+//            binding.buttonNew.visibility = View.GONE
+//
+//            selectedDoctor = doctorWithSpecialty
+//            selectedSpecialty = doctorWithSpecialty.specialty
+//        }
     }
 
 }

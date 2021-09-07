@@ -7,10 +7,12 @@
         <entry key="app/src/main/res/layout/fragment_doctor.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/fragment_specialty.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/itens_doctors.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/itens_list_specialty.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/itens_patients.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/itens_specialty.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/schedule_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/specialty_fragment.xml" value="0.2234375" />
       </map>
     </option>

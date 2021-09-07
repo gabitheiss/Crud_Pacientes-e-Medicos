@@ -17,7 +17,9 @@ import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.model.Specialty
 import com.example.crud_pacientes_e_medicos.view_model.MainViewModel
 import com.example.crud_pacientes_e_medicos.view_model.SpecialtyViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SpecialtyFragment : Fragment(R.layout.specialty_fragment) {
 
     companion object {
