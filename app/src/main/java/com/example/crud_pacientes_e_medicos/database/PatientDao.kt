@@ -12,12 +12,12 @@ interface PatientDao {
     @Query ("SELECT * from Patient order by patient_name ")
     fun getPatients() : List<Patient>
 
-    @Insert(onConflict = ABORT)
+    @Insert(onConflict = REPLACE)
     fun insert(list: List<Patient>)
 
     @Delete
     fun delete(patient: Patient)
 
-    @Update
+    @Update(onConflict = REPLACE)
     fun update(patient: Patient)
 }

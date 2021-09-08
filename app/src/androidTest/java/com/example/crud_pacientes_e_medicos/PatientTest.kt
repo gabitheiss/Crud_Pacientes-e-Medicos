@@ -8,7 +8,6 @@ import com.example.crud_pacientes_e_medicos.database.AppDatabase
 import com.example.crud_pacientes_e_medicos.database.PatientDao
 import com.example.crud_pacientes_e_medicos.model.Patient
 import com.google.common.truth.Truth.assertThat
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -50,19 +49,20 @@ class PatientTest {
 
     @Test
     fun testing_update() {
-        val newPatient1 = Patient(name = "Teste", age = "30", patient_gender = "M")
-        val newPatient2 = Patient(name = "Teste 2", age = "29", patient_gender = "F")
-        val newPatient3 = Patient(name = "Teste 3", age = "28", patient_gender = "F")
+        val newPatient1 = Patient(1, name = "Teste", age = "30", patient_gender = "M")
+        val newPatient2 = Patient(2, name = "Teste 2", age = "29", patient_gender = "F")
+        val newPatient3 = Patient(3, name = "Teste 3", age = "28", patient_gender = "F")
         val listToInsert = arrayListOf(newPatient1, newPatient2, newPatient3)
         dao.insert(listToInsert)
 
         val patientForUpdate = Patient(id = newPatient2.id, name = "P2Updated", age = "23", patient_gender = "M")
-        dao.update(patientForUpdate)
+        val listToInsert1 = arrayListOf(patientForUpdate)
+        dao.insert(listToInsert1)
 
-        val result = dao.getPatients(newPatient2.id)
-        assertThat(result.name).isEqualTo(patientForUpdate.name)
-        assertThat(result.age).isEqualTo(patientForUpdate.age)
-        assertThat(result.patient_gender).isEqualTo(patientForUpdate.patient_gender)
+
+        val result = dao.getPatients()
+        assertThat(result).contains(patientForUpdate)
+
     }
 
     @Test
