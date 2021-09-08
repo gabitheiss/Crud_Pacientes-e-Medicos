@@ -15,7 +15,6 @@ class ScheduleFragment : Fragment(R.layout.schedule_fragment) {
     private lateinit var viewModel: ScheduleViewModel
 
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ScheduleViewModel::class.java)

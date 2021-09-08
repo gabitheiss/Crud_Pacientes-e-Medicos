@@ -12,9 +12,6 @@ interface PatientDao {
     @Query ("SELECT * from Patient order by patient_name ")
     fun getPatients() : List<Patient>
 
-//    @Query ("SELECT * from Patient order by patient_gender")
-//    fun fetch(gender: String) : List<Patient>
-
     @Insert(onConflict = ABORT)
     fun insert(list: List<Patient>)
 

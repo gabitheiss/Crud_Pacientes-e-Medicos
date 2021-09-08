@@ -7,9 +7,9 @@ data class Schedule(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "schedule_id")
-    var idSchedule: Long = 0,
-    var patientFK : Long,
-    var doctorFK: Long
+    var idSchedule: Int = 0,
+    var patientFK : Int,
+    var doctorFK: Int
 )
 
 
