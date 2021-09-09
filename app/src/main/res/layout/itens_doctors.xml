@@ -28,17 +28,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/id"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:enabled="false"
-                android:text="ID"
-                android:textSize="12dp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toTopOf="@+id/idNameDoctor"
-                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/idNameDoctor"

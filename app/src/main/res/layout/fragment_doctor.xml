@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/idSpecialist"
+            android:id="@+id/idSpecialty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:completionThreshold="1" />

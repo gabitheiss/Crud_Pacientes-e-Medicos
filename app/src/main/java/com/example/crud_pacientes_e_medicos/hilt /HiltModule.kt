@@ -20,14 +20,17 @@ object HiltModule {
     fun providePatientDao(@ApplicationContext context: Context): PatientDao {
         return AppDatabase.getDatabase(context).patientDao()
     }
+
     @Provides
     fun provideDoctorDao(@ApplicationContext context: Context): DoctorDao {
         return AppDatabase.getDatabase(context).doctorDao()
     }
+
     @Provides
     fun provideSpecialtyDao(@ApplicationContext context: Context): SpecialtyDao {
         return AppDatabase.getDatabase(context).specialtyDao()
     }
+
     @Provides
     fun provideSchedulesDao(@ApplicationContext context: Context): SchedulesDao {
         return AppDatabase.getDatabase(context).schedulesDao()
@@ -37,10 +40,13 @@ object HiltModule {
     @Provides
     fun doctorRepository(doctorDao: DoctorDao): DoctorRepository = DoctorRepository(doctorDao)
 
-        @Provides
-        fun patientRepository(patientDao: PatientDao): PatientRepository =
-            PatientRepository(patientDao)
+
+    @Provides
+    fun patientRepository(patientDao: PatientDao): PatientRepository = PatientRepository(patientDao)
+
 
     @Provides
     fun specialtyRepository(specialtyDao: SpecialtyDao): SpecialtyRepository = SpecialtyRepository(specialtyDao)
-    }
+
+}
+

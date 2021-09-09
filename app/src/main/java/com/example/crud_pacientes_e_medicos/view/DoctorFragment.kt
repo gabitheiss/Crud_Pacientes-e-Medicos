@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.GridLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.crud_pacientes_e_medicos.R
 import com.example.crud_pacientes_e_medicos.adapter.DoctorAdapter
 import com.example.crud_pacientes_e_medicos.databinding.FragmentDoctorBinding
@@ -17,7 +19,9 @@ import com.example.crud_pacientes_e_medicos.model.DoctorWithSpecialty
 import com.example.crud_pacientes_e_medicos.model.Patient
 import com.example.crud_pacientes_e_medicos.model.Specialty
 import com.example.crud_pacientes_e_medicos.view_model.DoctorViewModel
+import com.example.crud_pacientes_e_medicos.view_model.SpecialtyViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class DoctorFragment : Fragment(R.layout.fragment_doctor) {
@@ -27,11 +31,12 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
     }
 
     private lateinit var viewModel: DoctorViewModel
+    private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentDoctorBinding
     private lateinit var arrayAdapter : ArrayAdapter<String>
-
+    private var specialtyArray: List<Specialty> = listOf()
+    private var objectSpecialty: Specialty? = null
     private var selectedDoctor: Doctor? = null
-    private var selectedSpecialty: Specialty? = null
 
     private val adapterDoctor = DoctorAdapter{
         valueToFields(it)
@@ -46,10 +51,7 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
     }
 
     private val observerSpecialty = Observer<List<Specialty>>{
-        val listSpecialty = it.map {specialty ->
-            specialty.nameSpecialty
-        }
-        arrayAdapter.addAll(listSpecialty)
+        completeArrayAdapter(it)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,9 +59,8 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
         binding = FragmentDoctorBinding.bind(view)
         viewModel = ViewModelProvider(this).get(DoctorViewModel::class.java)
 
-        completeArrayAdapter()
 
-       var recyclerView = binding.recyclerViewListDoctors
+        recyclerView = binding.recyclerViewListDoctors
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapterDoctor
 
@@ -70,11 +71,10 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
         viewModel.getSpecialty()
 
 
-
         binding.buttonNew.setOnClickListener {
-            val name = binding.idNameDotor?.text.toString()
-            if(name.isNotEmpty() && selectedSpecialty != null){
-                viewModel.insert(Doctor(nameDoctor = name.toString(), specialtyFk = selectedSpecialty!!.idSpecialty))
+            val name = binding.idNameDotor?.text
+            if(name.isNotEmpty() && objectSpecialty != null){
+                viewModel.insert(Doctor(nameDoctor = name.toString(), specialtyFk = objectSpecialty?.idSpecialty!!))
                 clearFields()
             }
         }
@@ -87,8 +87,8 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
         }
         binding.buttonEdit.setOnClickListener {
             val name = binding.idNameDotor.text
-            if(name.isNotEmpty() && selectedSpecialty != null){
-                viewModel.update(Doctor(nameDoctor = name.toString(), specialtyFk = selectedSpecialty!!.idSpecialty))
+            if(name.isNotEmpty() && objectSpecialty != null){
+                viewModel.update(Doctor(nameDoctor = name.toString(), specialtyFk = objectSpecialty?.idSpecialty!!))
                 clearFields()
             }
         }
@@ -96,24 +96,18 @@ class DoctorFragment : Fragment(R.layout.fragment_doctor) {
     }
     fun clearFields() {
         binding.idNameDotor?.setText("")
-        binding.idSpecialist?.setText("")
-        selectedSpecialty = null
-        selectedDoctor = null
+        binding.idSpecialty?.setText("")
     }
 
-    private fun completeArrayAdapter() {
-        arrayAdapter =
-            ArrayAdapter<String>(requireContext(), R.layout.itens_list_specialty)
-        val autoCompleteBrand: AutoCompleteTextView? =
-            binding.idSpecialist.text as? AutoCompleteTextView
-        autoCompleteBrand?.setAdapter(arrayAdapter)
-        autoCompleteBrand?.setOnItemClickListener { parent, view, position, id ->
-            val selected = parent.getItemAtPosition(position) as String
-            viewModel.specialty.value?.first { specialty -> (specialty.nameSpecialty.equals(selected, true)) }
-                ?.let {
-                    selectedSpecialty = it
-                }
+    private fun completeArrayAdapter(list: List<Specialty>) {
+        val listAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, list)
+        var insertList = binding.idSpecialty as AutoCompleteTextView
+        insertList.setAdapter(listAdapter)
+
+        binding.idSpecialty.setOnItemClickListener { adapterView, view, i, l ->
+            objectSpecialty = adapterView.getItemAtPosition(i) as Specialty
         }
+
     }
 
 }
